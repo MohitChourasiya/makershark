@@ -16,13 +16,14 @@ public class SupplierController {
     private SupplierService supplierService;
 
     @GetMapping("/search")
-    public List<Supplier> querySuppliers(@RequestBody SupplierSearchRequest request) {
-        return supplierService.searchSuppliers(
+    public ResponseEntity<?> querySuppliers(@RequestBody SupplierSearchRequest request) {
+        Object o = supplierService.searchSuppliers(
                 request.getLocation(),
                 request.getNatureOfBusiness(),
                 request.getManufacturingProcess(),
                 request.getLimit()
         );
+        return new ResponseEntity<>(o, HttpStatus.FOUND);
     }
     
     @PostMapping("/create")
