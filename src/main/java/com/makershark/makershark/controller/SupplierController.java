@@ -24,4 +24,9 @@ public class SupplierController {
                 request.getLimit()
         );
     }
+    
+    @PostMapping("/create")
+    public Supplier createSupplier(@RequestBody Supplier supplierRequest) {
+        return supplierService.saveSupplier(supplierRequest);
+    }
 }
