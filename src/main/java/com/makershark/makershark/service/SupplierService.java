@@ -15,10 +15,13 @@ public class SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
 
-    public List<Supplier> searchSuppliers(String location, NatureOfBusiness natureOfBusiness, ManufacturingProcess manufacturingProcess, int limit) {
+   public Object searchSuppliers(String location, NatureOfBusiness natureOfBusiness, ManufacturingProcess manufacturingProcess, int limit) {
         List<Supplier> suppliers = supplierRepository.findByLocationAndNatureOfBusinessAndManufacturingProcessesContaining(
                 location, natureOfBusiness, manufacturingProcess);
-        return suppliers;
+        if (suppliers !=null){
+            return suppliers;
+        }
+        return "cannot finds by given details";
     }
 
     public Supplier saveSupplier(Supplier supplierRequest) {
