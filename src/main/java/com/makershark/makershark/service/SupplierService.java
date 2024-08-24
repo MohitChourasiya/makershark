@@ -20,4 +20,14 @@ public class SupplierService {
                 location, natureOfBusiness, manufacturingProcess);
         return suppliers;
     }
+
+    public Supplier saveSupplier(Supplier supplierRequest) {
+        Supplier supplier = new Supplier();
+        supplier.setCompanyName(supplierRequest.getCompanyName());
+        supplier.setWebsite(supplierRequest.getWebsite());
+        supplier.setLocation(supplierRequest.getLocation());
+        supplier.setNatureOfBusiness(supplierRequest.getNatureOfBusiness());
+        supplier.setManufacturingProcesses(supplierRequest.getManufacturingProcesses());
+        return supplierRepository.save(supplier);
+    }
 }
